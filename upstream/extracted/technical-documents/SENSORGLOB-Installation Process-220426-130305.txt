@@ -1,0 +1,50 @@
+     Installation Process
+
+    Note: This document has been superseded by the Smoke Alarm Manual.docx and Sensor
+    Hub Manual.docx on OneDrive: User Manuals
+
+1. Physically install the Hub and and power it on.
+2. Open up the mobile Trader app, log in and proceed with the job assigned.
+3. Scan QR code to connect the Hub.
+4. The blue comms light on the Hub (the far right one) will be flashing. Wait around three
+   minutes until it goes solid blue.
+5. Tap refresh in app and it'll display as connected if it doesn’t refresh automatically.
+6. Double-tap Alarm’s physical TEST button within 1s to put that alarm into pairing mode. The
+   orange light will flash for two minutes while it's in pairing mode.
+7. Scan and add that Alarm in the mobile app, the Alarm will beep to indicate success.
+8. Repeat Steps 6 & 7 for other Alarms.
+9. Done! Take photos and tap complete job.
+
+
+
+    Previous installation notes below with more technical details:
+Installation is two-part, with the Hub being installed initially, then alarms.
+
+Hub
+  Electrician logs into mobile app.
+  Agent assigns Job (on a Property) to an electrician.
+  Electrician receives push notification about Job.
+  Electrician takes hardware to location and opens app ready to install.
+  Electrician scans Hub QR code with app and installs Hub hardware, nominally behind the
+  fridge.
+  Electrician takes photos of Hub after it's installed.
+  API activates SIM card and polls VERIFY command to Hub until a response is received.
+  After 5-10 minutes, the SIM card will be active and the API will receive a VERIFY response
+  from the Hub to indicate it's now online.
+
+Alarms
+  After Hub is installed, electrician will scan the alarm QR code with the app and install alarm
+  as required.
+
+
+
+
+  API will send ADD command to Hub, which will then link the alarm to that Hub taking around
+  10 seconds.
+  Electrician will repeat this process to add additional alarm(s) in property.
+  Electrician takes photos of alarms after they're installed.
+After all alarms are installed, electrician will run a Test, where the API will send the Hub a
+ TEST event - and each alarm will sound in sequence.
+With a positive response to the TEST event, installation is done and the electrician taps
+confirm to sign off the Job.
+

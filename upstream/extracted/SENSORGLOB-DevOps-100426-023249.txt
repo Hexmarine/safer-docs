@@ -1,0 +1,36 @@
+     DevOps
+
+    In case of any emergency issue with our Production infrastructure: email
+    sensorglobal.msp@appinventiv.com
+
+
+Support Email: sensorglobal.msp@appinventiv.com is live and integrated with ITSM tool -
+Freshservice.
+Any email sent to the support email ID will automatically get converted into a ticket and will
+be assisted by DevOps engineers.
+
+
+
+Escalation Matrix
+
+
+             Level            Name               Contact Details    Availability
+                                                                    [IST]
+             Level 1          Pawan Kumar        Email-          In case of high
+                              Binjola            pawan.binjola@a priority/outage :-
+                              Service            ppinventiv.com 24*7*365
+                              Delivery Lead      Ph No. +91
+                                                 9756363959
+             Level 2            Kuber Singh      Email -        In case of high
+                              Delivery           kuber.singh@ap priority/outage :-
+                              Manager            pinventiv.com  24*7*365
+                                                 Ph No. +91
+                                                 9911662440
+
+Fortnightly Meetings
+
+Usually, the AppInventiv DevOps team will have fortnightly meetings to keep a pulse on
+production infrastructure. They give an overview of all our production services with metrics and
+observations. Main goal of this is to pick up any anomalies with EC2 instances, and work
+through any work items like security reviews, cost optimisation, scaling, etc.
+

@@ -1,0 +1,115 @@
+@startuml
+
+title Sensor - System Architecture
+
+skinparam componentStyle rectangle
+skinparam linetype ortho
+
+skinparam rectangle {
+  BackgroundColor #FFFFFF
+  BorderColor #666666
+  FontSize 13
+}
+skinparam database {
+  BackgroundColor #EEF4FF
+  BorderColor #4477AA
+}
+skinparam cloud {
+  BackgroundColor #FFF8E7
+  BorderColor #CCAA44
+}
+skinparam node {
+  BackgroundColor #F0F8F0
+  BorderColor #447744
+}
+skinparam package {
+  BackgroundColor #F8F8FF
+  BorderColor #9999CC
+}
+skinparam arrowColor #555555
+skinparam arrowFontSize 11
+skinparam noteBorderColor #AAAAAA
+skinparam noteBackgroundColor #FFFDE7
+
+' ── Field Devices ──────────────────────────────────────
+package "Field (Property)" {
+  rectangle "Smoke / Heat\nSensor" as Sensor
+  rectangle "Sensor Hub\n(LTE / KORE SIM)" as Hub
+  Sensor --> Hub : RF 433MHz
+}
+
+' ── Connectivity ───────────────────────────────────────
+cloud "SIM\n(Omondo?)" as KORE
+Hub --> KORE : cellular backhaul
+
+' ── AWS ap-southeast-2 ─────────────────────────────────
+node "AWS  ap-southeast-2" {
+
+  package "Messaging" {
+    rectangle "EMQX\nMQTT Broker" as MQTT
+  }
+
+  package "Application" {
+    rectangle "Node.js / Express\nBackend API" as API
+    rectangle "SSO Provider\n(OIDC)" as SSO
+  }
+
+  package "Data" {
+    database "MySQL\n(primary store)" as MySQL
+    database "MongoDB\n(event logs)" as Mongo
+    database "Redis\n(cache / sessions)" as Redis
+    database "Kafka\n(event stream)" as Kafka
+  }
+
+  package "Web Hosting" {
+    rectangle "Angular Portals\n(Agency / Admin)" as Web
+  }
+
+}
+
+' ── Client Apps ────────────────────────────────────────
+package "Client Apps" {
+  rectangle "React Native\nMobile App\n(iOS + Android)" as Mobile
+}
+
+' ── External Services ───────────────────────────────────
+package "External Services" {
+  rectangle "SendGrid\n(Email)" as SG
+  rectangle "Firebase\n(Push Notifications)" as FB
+  rectangle "SMS Gateway" as SMS
+  rectangle "Odoo\n(CRM / Ops)" as Odoo
+}
+
+' ── Connections ────────────────────────────────────────
+KORE --> MQTT : MQTT over TLS
+
+MQTT --> API : subscriber\n(events in)
+API --> MQTT : publish\n(commands out)
+
+API --> MySQL
+API --> Mongo
+API --> Redis
+API --> Kafka
+
+API --> SG : email alerts
+API --> FB : push notifications
+API --> SMS : SMS alerts
+API --> Odoo : operational data
+
+SSO --> API : token validation
+
+Web --> API : HTTPS / REST
+Web --> SSO : OIDC login
+
+Mobile --> API : HTTPS / REST
+Mobile --> SSO : OIDC login
+Mobile --> FB : receives push
+
+note bottom of MQTT
+  Hub subscribes to command topic
+  Hub publishes to response topic
+  Backend subscribes to response topic
+  Backend publishes to command topic
+end note
+
+@enduml

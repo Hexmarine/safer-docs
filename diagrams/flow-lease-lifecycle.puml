@@ -1,0 +1,77 @@
+@startuml
+title Lease & Tenant Lifecycle
+
+skinparam sequenceMessageAlign center
+skinparam ParticipantPadding 20
+
+actor "Agency / Agent" as AG
+actor "Tenant" as T
+participant "Backend API" as BE
+database "MySQL\n(Property / Lease)" as DB
+participant "Notifications" as N
+
+== Property Activation ==
+
+AG -> BE : POST /properties\n(address, agencyId, agentId)
+BE -> DB : create Property\n(status=DRAFT)
+AG -> BE : PUT /properties/landlord\n(landlordId)
+BE -> DB : create Landlord record,\nlink Property.landlord FK
+AG -> BE : PATCH /properties/activate
+BE -> DB : Property status=ACTIVE
+
+== Lease Creation ==
+
+AG -> BE : POST /lease\n(propertyId, startDate, endDate,\nrent, type)
+BE -> DB : create Lease\n(status=INACTIVE)
+
+AG -> BE : POST /lease/add-tenant\n(leaseId, tenantName, email, phone)
+BE -> DB : create Admins record\n(userType=TENANT)
+BE -> DB : create LeaseTenant record
+BE -> N : send welcome SMS/email\nto Tenant with app access
+
+alt More tenants
+  AG -> BE : POST /lease/add-tenant (repeat)
+end
+
+AG -> BE : PATCH /lease/change-status\n(status=ACTIVE)
+BE -> DB : Lease status=ACTIVE
+BE -> DB : Property.leaseStatus=ACTIVE
+BE -> N : notify Landlord: lease started
+
+== Active Tenancy ==
+
+note over T, N
+  Tenants receive alarm
+  event notifications
+  (ALERT, TAMPERED, HUSH)
+  per property config.
+end note
+
+T -> BE : GET /lease/my-lease
+T -> BE : Portal / mobile app access
+
+AG -> BE : PUT /lease/remove-association\n(tenantId) — remove one tenant
+BE -> DB : remove LeaseTenant record
+BE -> DB : revoke tenant app access
+
+== Lease End ==
+
+AG -> BE : PATCH /lease/change-status\n(status=INACTIVE)
+BE -> DB : Lease status=INACTIVE
+BE -> DB : Property.leaseStatus=INACTIVE
+
+note over DB
+  If no active leases remain
+  on the property,
+  Property status → INACTIVE
+end note
+
+BE -> N : notify Landlord: lease ended
+BE -> DB : archive LeaseTenant records\n(isCurrentLandlord flag updated\nif landlord changes)
+
+== Property Re-listed ==
+
+AG -> BE : POST /lease (new lease)
+note right : Alarms remain active\non the property.\nNew lease reactivates\ntenant notifications.
+
+@enduml

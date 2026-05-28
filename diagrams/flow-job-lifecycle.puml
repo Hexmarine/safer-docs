@@ -1,0 +1,58 @@
+@startuml
+title Job Lifecycle — State Machine
+
+skinparam state {
+  BackgroundColor #FFFFFF
+  BorderColor #666
+  ArrowColor #444
+  FontSize 13
+}
+skinparam noteBackgroundColor #FFFDE7
+skinparam noteBorderColor #CCBB44
+
+[*] --> PENDING : Agency creates job\n(INSTALLATION / MAINTENANCE\n/ REMOVAL / INSPECTION)
+
+PENDING --> PENDING : Agency unassigns\nTradePerson
+
+PENDING --> ACCEPTED : TradePerson\naccepts job
+
+PENDING --> CANCELLED : Agency cancels
+
+ACCEPTED --> ACCEPTED : TradePerson assigns /\nreassigns ServiceStaff
+
+ACCEPTED --> IN_PROGRESS : ServiceStaff\nstarts on-site work
+
+ACCEPTED --> NOE_SCHEDULED : Agency schedules\n"Notice of Entry" date
+
+ACCEPTED --> PENDING : TradePerson unassigns\n(returns to pool)
+
+NOE_SCHEDULED --> ACCEPTED : Tenant rejects NOE\nor date changes
+
+NOE_SCHEDULED --> IN_PROGRESS : NOE accepted,\nwork begins
+
+IN_PROGRESS --> COMPLETED : ServiceStaff\nmarks complete
+
+IN_PROGRESS --> CANCELLED : Agency cancels\n(with reason)
+
+COMPLETED --> [*]
+CANCELLED --> [*]
+
+note right of PENDING
+  Notification: TradePerson
+  receives email + push +
+  optional SMS with
+  accept_job_link
+end note
+
+note right of ACCEPTED
+  ServiceStaff auto-assigned
+  and auto-accepts if they
+  create own Maintenance job
+end note
+
+note right of COMPLETED
+  If INSTALLATION job:
+  alarm goes live on property
+end note
+
+@enduml

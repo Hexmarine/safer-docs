@@ -1,0 +1,82 @@
+    Information Security Overview
+Information Security and Data Protection Overview
+Foundational Principles
+At Sensor, we are committed to maintaining the highest standards of information security. Our
+approach is guided by the following foundational principles:
+Principle 1: Access Control
+
+Access to sensitive information is limited to individuals with legitimate business needs. Our
+access model adheres to the principle of least privilege, ensuring that users only have the
+access necessary to perform their roles effectively.
+Principle 2: Defense-in-Depth
+
+We implement a multi-layered security approach, known as defense-in-depth. This means that
+security controls are strategically layered across our systems, creating multiple lines of defence
+against potential threats.
+Principle 3: Consistency
+
+Security controls are consistently applied across all areas of our company. This ensures a
+unified and cohesive security posture, minimizing vulnerabilities that could arise from
+inconsistencies.
+Principle 4: Continuous Improvement
+
+We recognize that security is an evolving landscape. Our controls are implemented iteratively,
+with a focus on enhancing effectiveness, and audibility and reducing friction in the user
+experience.
+
+Data Collection and Storage
+We collect and store data as required for compliance, invoicing, and notifications. The types of
+data we collect include:
+  IP addresses
+  Location data
+  Contractor License Numbers
+  Contractor Insurance Numbers
+  Addresses
+  Phone numbers
+  First name
+  Given name
+  Email addresses
+  Company name
+  Company location
+  Company email contact
+  ABN (Australian Business Number)
+  Contractor Bank ID (BSB or equivalent)
+  Contractor Bank Account Number
+  Timezone
+Data is imported from customer software systems, CSV files, or manually entered. Importantly,
+we never collect sensitive information such as driver's license numbers, passport numbers, or
+health insurance details.
+
+Data Protection Measures
+Access Control and Encryption
+
+Access to sensitive data is strictly limited to Sensor administrators. Two-Factor Authentication
+(2FA) is mandatory for accessing customer data. All data is encrypted both during transmission
+and while at rest, ensuring data confidentiality and integrity.
+Infrastructure Security
+
+Our services are hosted within AWS Australia, utilizing a robust architecture with firewalls that
+restrict external access to individual servers and databases. Developer access requires VPN
+connectivity and is granted on an as-needed basis. Multi-Factor Authentication (MFA) is
+enforced across all infrastructure accounts.
+
+Compliance and Auditing
+We uphold rigorous standards to ensure compliance and regularly undergo third-party
+assessments:
+  Penetration Testing: Yearly penetration testing by Triskele Labs assesses our software and
+  network security.
+  Continuous Auditing: We maintain compliance with SOC 2 and ISO 27001 through continuous
+  auditing via the Vanta platform.
+  Software Security: GitHub Dependabot helps us identify vulnerabilities, which we promptly
+  address within defined SLAs.
+
+Third-Party Involvement
+We engage select third-party companies to support our operations:
+  SendGrid: For email delivery purposes, minimal personal data is shared with SendGrid. Refer
+  to their security policy and privacy policy for details.
+  AWS: Our cloud infrastructure provider is AWS. Learn more about their data protection
+  policies and compliance in Australia and New Zealand.
+Some good references:
+    Security is a good reference.
+  Use Trust at Asana • Asana for some more reference.
+

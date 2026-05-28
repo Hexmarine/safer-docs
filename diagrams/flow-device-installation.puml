@@ -1,0 +1,71 @@
+@startuml
+title Device Installation Flow
+
+skinparam sequenceMessageAlign center
+skinparam ParticipantPadding 20
+
+actor "Agency" as A
+actor "TradePerson" as T
+actor "ServiceStaff" as SS
+participant "Backend API" as BE
+participant "MQTT Broker" as B
+participant "Hub" as H
+participant "Sensor" as S
+database "MySQL" as DB
+
+== Job Creation ==
+
+A -> BE : POST /jobs (type=INSTALLATION,\npropertyId, tradePersonId)
+BE -> DB : create Job (status=PENDING)
+BE -> T : email: "New job assigned"\n+ accept link
+
+== Job Acceptance ==
+
+T -> BE : PATCH /jobs/status (ACCEPTED)
+BE -> DB : update Job status=ACCEPTED
+BE -> A : notify: TradePerson accepted
+
+== On-Site Installation ==
+
+T -> BE : POST /jobs/assign-staff\n(serviceStaffId)
+BE -> DB : update Job.serviceStaffId
+T -> SS : dispatch to property
+
+SS -> H : physically connect\nHub to power + internet
+SS -> BE : POST /alarms/register\n(serialNumber, propertyId, jobId)
+BE -> DB : create Alarm record\n(connectedStatus=PENDING)
+BE -> B : MQTT publish CMD=ADD\nALARMSERIAL to hub topic
+
+== Hub Pairing Handshake ==
+
+B -> H : CMD=ADD, ALARMSERIAL
+H -> S : RF: pair sensor
+S -> H : RF: pairing ACK
+H -> B : MQTT response: ADD STATUS=1 (success)
+B -> BE : ADD STATUS=1 received
+
+alt ADD STATUS=1 — success
+  BE -> DB : update Alarm\n(connectedStatus=CONNECTED)
+  BE -> B : MQTT publish CMD=VERIFY\nto hub
+  B -> H : CMD=VERIFY
+  H -> S : RF: verify sensor
+  S -> H : RF: VERIFY ACK
+  H -> B : MQTT response: VERIFY STATUS=1
+  B -> BE : VERIFY STATUS=1
+  BE -> DB : update Alarm status=ACTIVE
+else ADD STATUS=2 — already paired
+  BE -> B : MQTT publish CMD=REMOVE\n(force unpair)
+  BE -> DB : log conflict
+else ADD STATUS=0/3 — failure
+  BE -> DB : log failure
+  BE -> B : MQTT publish CMD=VERIFY\n(retry)
+end
+
+== Job Completion ==
+
+SS -> BE : PATCH /jobs/status (COMPLETED)
+BE -> DB : update Job status=COMPLETED
+note over DB : If INSTALLATION job completed\nand property active → alarm goes live\nfor tenant/landlord notifications
+BE -> A : notify: installation complete
+
+@enduml

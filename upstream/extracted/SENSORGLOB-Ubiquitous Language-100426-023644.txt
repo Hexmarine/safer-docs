@@ -1,0 +1,70 @@
+     Ubiquitous Language
+To help us out with all our internal and external communications, the Ubiquitous Term column is
+what we need to use ideally.
+
+ Ubiquitous Term        Definition              Other Words             Information
+TS                      Trade Supplier, the     Service Staff, Staff
+                        individual tradee.
+Contractor              Master Trade Supplier, Trade Person, MTS        Previously MTS.
+                        the owner of a tradee
+                        company.
+PM                      Property Manager, a     Agent
+                        real estate agent
+                        managing properties.
+Agent Super User        The owner/principle of Agency, Super User
+                        a real estate agency.
+Agent Admin             A Property Manager
+                        who can administer
+                        other Agents.
+Sensor Hub app          Our Sensor Hub         our App
+                        application on the iOS
+                                               SENSOR APP
+                        and Android app
+                        stores.                the app
+                                                the App
+                                                THE APP
+                                                Trade App
+                                                TRADE App
+                                                Sensor Trade App
+Sensor Devices          One or more of our
+                        physical devices i.e.
+                        Sensor Hub, Sensor
+                 217E-02 Photoelectric
+                 Smoke Alarm, etc.
+Sensor Hub       Our physical hub     hub
+                 device that sits in
+                                      Hub
+                 homes and acts as an
+                 IoT gateway.         HUB
+
+Sensor Support   Our internal Sensor     Support
+                 support team who
+                                         Sensor support
+                 handles support
+                 queries.
+Sensor Cloud     Our backend service.
+Sensor Cloud     Our SaaS sites.         Agent Portal
+Software
+                                         Owner Portal
+                                         Sensor Global
+                                         Owner's Portal
+                                         Sensor Live
+                                         Sensor Portal
+                                         Trade Portal
+                                         Web-based Portal
+                                         the Portal
+The Sensor       Our overall product     Sensor Cloud
+Ecosystem        offerings, including    Software
+                 software and
+                                         Sensor Global Suite
+                 hardware.
+                                         IoT Software System
+                                         Sensor Alarm
+                                         Monitoring System
+                                         Sensor Global
+                                         Integrated Alarm
+                                         System
+                                         Sensor Suite
+Sensor system
+Sensor System
+

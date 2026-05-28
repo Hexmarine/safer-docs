@@ -1,0 +1,66 @@
+@startuml
+title Agency Onboarding Flow
+
+skinparam sequenceMessageAlign center
+skinparam ParticipantPadding 20
+
+actor "SuperAdmin" as SA
+actor "Agency Admin" as AG
+actor "Agent" as AGT
+actor "TradePerson" as T
+actor "ServiceStaff" as SS
+participant "Backend API" as BE
+database "MySQL" as DB
+participant "Email\n(SendGrid)" as EM
+
+== Agency Account Setup ==
+
+SA -> BE : POST /users/create-agency\n(name, email, plan)
+BE -> DB : create Admins record\n(userType=AGENCY)
+BE -> EM : send welcome + credentials\nto Agency Admin
+
+== Agency Configuration ==
+
+AG -> BE : POST /branches/create\n(name, address)
+BE -> DB : create Branch record
+
+AG -> BE : POST /users/create-agent\n(name, email, branchId)
+BE -> DB : create Admins record\n(userType=AGENT, agency=agencyId)
+BE -> EM : send welcome + credentials\nto Agent
+
+AG -> BE : PUT /settings/notifications\n(alert config per event type)
+BE -> DB : save notification\npreferences per role
+
+== TradePerson Invitation ==
+
+AG -> BE : POST /invitations\n(traderPersonEmail, permissions)
+BE -> DB : create Invitation record\n(status=PENDING)
+BE -> EM : send invitation email\nwith accept link (SendGrid template)
+
+T -> BE : GET /invitations/accept?token=...
+BE -> DB : lookup Invitation, validate token
+BE -> DB : create Admins record\n(userType=TRADEPERSON)
+BE -> DB : update Invitation\n(status=INVITE_ACCEPTED)
+BE -> EM : confirmation email to Agency
+
+== TradePerson creates ServiceStaff ==
+
+T -> BE : POST /users/create-service-staff\n(name, email)
+BE -> DB : create Admins record\n(userType=SERVICESTAFF,\ntraderPerson=tradePersonId)
+BE -> EM : send credentials\nto ServiceStaff
+
+note over SS
+  ServiceStaff can only
+  create Maintenance jobs.
+  Auto-assigns & accepts
+  own jobs.
+  Optional: receives daily
+  run sheet via SMS/email.
+end note
+
+== Platform Ready ==
+
+AG -> BE : POST /properties/create
+BE -> DB : create Property record\n(assigned to agency + agent)
+
+@enduml

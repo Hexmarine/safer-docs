@@ -1,0 +1,69 @@
+﻿
+Table of Contents
+The Sensor Ecosystem	3
+Technology Overview	4
+Hardware – Networking	5
+Hardware – Security	5
+
+
+
+
+
+
+
+The Sensor Ecosystem
+Sensor has created a world-first ecosystem of intuitive software and always-on interconnected smart devices that provide early warning of risks that are dangerous to health and property.
+
+At the centre of our ecosystem is the Sensor Hub – a clever device that connects all the Sensor safety alarms and other IoT Devices to the internet on its own dedicated, and isolated mobile network.
+
+Our intuitive software automatically manages the connections and testing of all devices and will alert of issues and potential safety concerns. It provides a new level of compliance control, with securely saved reporting and audit trails.
+
+
+
+
+Technology Overview
+Sensor follows best practices across our entire technology stack and is focussed on process optimisation across all areas of business.
+
+Software
+    • All software is hosted in AWS, with load balancers and scaling across the API, and the web files deployed statically in S3.
+    • AWS Route 53 used for domains, RapidSSL used for wildcard SSL.
+    • IoT commands through MQTT, using a distributed HiveMQTT backend.
+    • Monolithic API platform is based on Node.js and Angular.
+    • iOS and Android apps are built natively using Swift and Kotlin.
+    • Backend database runs on MySQL in Amazon RDS.
+    • MongoDB and Kafka used for high performance event logging.
+    • Twilio Sendgrid for high performance email delivery.
+    • Yearly penetration testing performed by Triskele Labs.
+    • Odoo 16 Enterprise is used as our internal CRM with multiple custom integration points to our API.
+
+Hardware
+    • Sensor Hub offers 433Mhz FSK RF networking to all Sensors in the house, and LTE Cat-M cellular networking.
+    • Rechargeable battery in the hub allows up to 48 hours of connectivity without power.
+    • Twin 10-year non-rechargeable lithium batteries power Sensors and their RF networking over the expected lifetime.
+    • KORE Super SIM used for cellular connectivity worldwide.
+    • 217E-02 Smoke alarms interconnect without using the Sensor Hub.
+    • Events are reported back to the API via the Sensor Hub in a hub + spoke topology.
+
+Process
+    • SOC 2 compliant and working towards ISO 27001 compliance.
+    • Agile software process, running in two weekly sprints.
+    • Jira, Confluence and Jira Product Discovery are used internally for ticket tracking and internal documentation of process, releases and upcoming features.
+    • Code progression through multiple environments gated by testing and PR approvals.
+    • Multiple levels of QA on Development, QA and Sandbox environments.
+    • CI is driven through Bitrise (iOS/Android) and AWS CodePipeline (API/Web).
+    • Zero downtime through blue-green deployments.
+    • SonarQube, GitHub and GitGuardian perform code and security analysis.
+    • 24/7 proactive DevOps monitoring across production infrastructure.
+    • Comprehensive internal monitoring with alerts across all environments.
+    • Comprehensive alert logging retained for 1 year to comply with SOC 2.
+
+Hardware – Networking
+    • We use 433Mhz RF between our Hubs and Sensor devices. This operates on a lower frequency than alternatives like Wi-Fi, Bluetooth, Z-wave, Zigbee and Matter, and has a much lower power consumption. We have minimal bandwidth requirements to further reduce power consumption.
+
+Hardware – Security
+    • We have minimal data transfer between Sensor Hubs and our API, and between our Hubs and Sensor devices.
+    • There is no personally identifying information transferred between Hubs, Alarms, and our API.
+    • We do not offer OTA updates on any Sensor devices, so there’s no process for compromised software to be loaded onto these devices.
+    • Our Hubs and Sensor devices do not gather data about the home, and do not transmit any data between the Sensor devices and Hub other than connectivity, alert, tampering, and battery conditions.
+    • The Sensor Hub and Sensor devices do not store any data history.
+

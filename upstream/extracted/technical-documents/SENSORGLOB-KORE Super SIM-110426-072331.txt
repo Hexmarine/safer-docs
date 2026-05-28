@@ -1,0 +1,34 @@
+KORE Super SIM
+We use KORE (previously Twilio) Super SIM for our cellular connectivity.
+  These SIM cards automatically connect to any available network we’ve allowed.
+  For the AU Pilot Fleet, the available networks are Telstra, Optus and Vodafone.
+  The SIM will initially attempt to connect to Telstra, as it’s the only item in the OPLMN, as per
+  Twilio support:
+
+   Regarding your question on OPLMN list,
+   U.S. AT&T
+   Australia Telstra
+   New Zealand Spark
+  If it fails to connect to Telstra, it will then try Optus and Vodafone.
+  Once connected it will re-connect to the last connected network initially, then continue
+  through the list.
+
+Data Usage
+
+
+Regarding your question "Is there a minimum usage or connection time for these to show in this
+report? Do SIM cards in the Ready state show up in this report, or do they only show once they
+progress to the Active state?"
+
+Data usage will show for active sims and not sims in ready status.
+
+  https://www.twilio.com/docs/iot/supersim/how-to-determine-a-super-sims-status
+  The Sim resource's Super SIM can connect to the network and is capable of consuming
+  network resources in accordance with the configuration of the Fleet resource to which it has
+  been assigned (indicated by the Sim resource’s fleet_sid property), but no monthly
+  subscription fee will be charged.
+   A Sim resource’s status can only be switched to ready if it currently new . Once
+  a ready Super SIM has consumed 250KB of data, five SMS Commands have been sent or
+  received by the Super SIM, or three months have passed, the Sim resource’s state will
+  automatically transition to active .
+

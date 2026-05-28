@@ -1,0 +1,54 @@
+@startuml
+title Alarm Test & Compliance Flow
+
+skinparam sequenceMessageAlign center
+skinparam ParticipantPadding 20
+
+actor "Agency / Agent" as A
+participant "Backend API" as BE
+participant "MQTT Broker" as B
+participant "Hub" as H
+participant "Sensor" as S
+database "MySQL\n(Alarm)" as DB
+database "MongoDB\n(AlarmLogs)" as M
+
+== Manual Test Initiated ==
+
+A -> BE : POST /alarms/test (alarmId)
+BE -> DB : lookup hub serialNumber\nfor this alarm
+BE -> B : MQTT publish CMD=TEST\nto hub command topic
+
+== Sensor Test ==
+
+B -> H : CMD=TEST delivered
+H -> S : RF: trigger test beep
+S -->S : sensor activates\n(smoke/heat sim)
+S -> H : RF: test response
+
+== Result Returned ==
+
+H -> B : MQTT response CMD=TEST STATUS=n
+
+alt STATUS=1 — smoke detected (beeping)
+  B -> BE : TEST STATUS=1
+  BE -> DB : update Alarm\n(testStatus=1, status=ACTIVE)
+  BE -> M : log test result
+  BE -> A : push: "Test in progress"
+else STATUS=2 — test complete / all clear
+  B -> BE : TEST STATUS=2
+  BE -> DB : update Alarm\n(testStatus=2, status=ACTIVE)
+  BE -> M : log test result
+  BE -> A : push: "Test passed"
+else STATUS=0 — test failed / no response
+  B -> BE : TEST STATUS=0
+  BE -> DB : log failure\n(testStatus=0)
+  BE -> M : log test failure
+  BE -> A : push: "Test failed — check device"
+end
+
+== Compliance Record ==
+
+BE -> DB : update Alarm.lastTestedAt\n+ compliance status
+note over DB : Compliance reports generated\nfrom lastTestedAt history.\nScheduled compliance checks\nrun via node-schedule.
+
+@enduml

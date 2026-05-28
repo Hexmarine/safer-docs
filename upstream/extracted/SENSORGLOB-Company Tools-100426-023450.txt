@@ -1,0 +1,59 @@
+     Company Tools
+Tools and Platforms We Utilize for Seamless Collaboration and Innovation
+Welcome to our comprehensive overview of the tools and platforms we leverage to streamline
+communication, enhance design processes, maintain meticulous documentation, and power our
+cutting-edge technology. Below, you'll find an organized breakdown of our toolkit, ensuring a
+seamless workflow across all departments. For any access or account-related inquiries, don't
+hesitate to reach out to Sam at samc@sensorglobal.com.
+
+
+Communication
+Facilitating effective communication is pivotal to our success. We employ a variety of tools to
+keep everyone connected and informed:
+1. Teams: Conduct video and audio calls while enabling real-time chat functionality.
+2. Outlook 365: Manage emails and calendars with ease, ensuring timely correspondence and
+  scheduling.
+
+
+Design
+The design phase is where innovation comes to life. Our creative endeavours are powered by:
+1. Miro: Empowering diagramming activities, aiding in visualizing complex concepts.
+2. Figma: Fueling our UX design processes, enabling collaborative and intuitive user
+   experiences.
+3. Adobe InDesign: For impeccable page layout and polished design aesthetics.
+
+
+Documentation
+Thorough documentation is the cornerstone of our knowledge-sharing culture. We rely on:
+1. Office 365: Harnessing Word, Excel, and PowerPoint for well-structured documentation.
+2. Confluence: Serving as a repository for user stories and comprehensive company-wide
+   product documentation.
+3. Jira: Efficiently managing bug tracking and road mapping, ensuring seamless project
+   progress.
+4. 1Password: Ensuring robust password management and data security.
+5. OneDrive: Securely storing and sharing essential documents.
+
+
+Technology
+Our technological prowess is supported by a collection of powerful platforms:
+1. Sendgrid: Orchestrating email communication from our products, ensuring efficient
+   correspondence.
+2. Twilio: Managing SIM cards, a fundamental component of our communication infrastructure.
+3. CodeTwo: Crafting consistent and professional email signatures.
+4. AWS (Amazon Web Services): Hosting our platforms, guaranteeing scalability and reliability.
+5. Google Play: Serving as the hub for hosting our Android applications.
+6. Apple App Store Connect: Facilitating the deployment and management of our iOS apps.
+7. Google Cloud: Enhancing our platform with supplementary API hosting.
+8. Tricentis Testim: Enabling automated testing to ensure the integrity and quality of our
+   products.
+
+
+Conclusion
+This comprehensive compilation of tools and platforms is at the heart of our collaborative
+efforts. By strategically implementing these resources, we foster innovation, promote seamless
+communication, and ensure meticulous documentation and robust technological advancements.
+Should you require access or account assistance, @Sam Collins is here to assist you at
+samc@sensorglobal.com.
+We continually refine our toolkit to align with emerging trends and technological advancements,
+ensuring that we remain at the forefront of our industry.
+

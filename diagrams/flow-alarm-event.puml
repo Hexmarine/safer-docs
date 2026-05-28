@@ -1,0 +1,68 @@
+@startuml
+title Alarm Event Flow
+
+skinparam sequenceMessageAlign center
+skinparam ParticipantPadding 20
+skinparam BoxPadding 10
+
+actor "Sensor" as S
+participant "Hub\n(KORE/LTE)" as H
+participant "MQTT Broker\n(EMQX)" as B
+participant "Backend\nSubscriber" as BE
+database "MySQL" as DB
+database "MongoDB\n(AlarmLogs)" as M
+participant "Socket.io" as SK
+participant "Notifications\n(Email/SMS/Push)" as N
+
+== Alarm Triggered ==
+
+S -> H : RF: ALERT (STATE=2, ALARMTYPE)
+H -> B : MQTT publish\nsensorsyn/hub/<serial>/response
+B -> BE : message delivered
+BE -> M : log raw ALERT event
+BE -> DB : update Alarm status,\ncheck notification config
+BE -> SK : push real-time update\nto portal / mobile
+BE -> N : notify Agency (email + push)
+BE -> N : notify Agent (email + push)
+BE -> N : notify Tenants (email + SMS)
+BE -> N : notify Landlord (email)
+
+== Alarm Cleared ==
+
+S -> H : RF: ALERT (STATE=0)
+H -> B : MQTT publish
+B -> BE : message delivered
+BE -> M : log cleared event
+BE -> DB : update Alarm status = cleared
+BE -> SK : push cleared update
+
+== Tamper Event ==
+
+S -> H : RF: TAMPERED (STATE=2 / 1 / 0)
+H -> B : MQTT publish
+B -> BE : message delivered
+BE -> M : log TAMPERED event
+BE -> BE : check flapping config\n(15 min / 2 day thresholds)
+BE -> DB : update tamperedStatus
+BE -> N : notify Agency + Agent (email + push)
+
+== Hush (Silence) ==
+
+actor "Tenant / Agent" as U
+U -> BE : POST /hush via API
+BE -> B : MQTT publish HUSH CMD\nto hub command topic
+B -> H : delivered
+H -> S : RF: silence alarm
+H -> B : MQTT response: HUSH ACK
+B -> BE : HUSH received
+BE -> M : log HUSH event
+BE -> N : notify Agent (email)
+
+== Low Battery ==
+
+S -> H : RF: LOW_BATTERY
+H -> B : MQTT publish
+B -> BE : message delivered
+BE -> N : notify Agency + Agent
+
+@enduml

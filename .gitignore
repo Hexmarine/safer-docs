@@ -1,0 +1,22 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Never commit secrets or local env into the docs repo.
+# (Patterns target secret-bearing FILE TYPES — not docs whose names merely
+#  mention "credentials"/"secrets" as a topic, which we do want tracked.)
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+
+# Local credential dumps (e.g. exported *_credentials.csv) — keep these out
+*_credentials.csv
+
+# Transient office lock files
+~$*

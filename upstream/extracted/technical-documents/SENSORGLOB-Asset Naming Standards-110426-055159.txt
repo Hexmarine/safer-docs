@@ -1,0 +1,73 @@
+Asset Naming Standards
+Consistent and well-structured asset naming is essential for maintaining an organized and
+efficient digital environment. This document outlines the naming conventions to be followed for
+various types of assets used on our website. Adhering to these standards will make it easier for
+team members to identify, access, and manage assets.
+
+General Guidelines
+  Descriptive names: Use names that accurately describe the content or purpose of the asset.
+  Lowercase: Always use lowercase letters for filenames to ensure consistency.
+  No special characters: Avoid special characters and spaces in filenames. Use underscores
+  (_) or hyphens (-) for word separation.
+  Version control: If multiple versions of an asset exist, indicate the version in the filename.
+  Extension: Include the appropriate file extension to indicate the file type.
+
+Image Files
+  Format: image_descriptive_name.extension
+    Example: profile_photo.jpg
+  Format (with resolution): image_responsive_name_widthxheight.extension
+    Example: banner_1920x1080.jpg
+
+Video Files
+  Format: video_descriptive_name.extension
+    Example: product_demo.mp4
+  Format (with resolution): name_video_resolution.extension
+    Example: tutorial_1080p.mp4
+
+Documents
+  Format: document_name.extension
+    Example: user_manual.pdf
+  Format (with type): document_type_name.extension
+    Example: annual_report_2023.pdf
+
+Audio Files
+  Format: audio_descriptive_name.extension
+   Example: podcast_episode.mp3
+ Format (with version): audio_descriptive_name_version.extension
+   Example: jingle_v1.mp3
+
+Icons
+  Format: icon_descriptive_name.extension
+    Example: search_icon.png
+  Format (with size): name_icon_size.extension
+    Example: cart_16x16.png
+
+CSS and Stylesheets
+ Format: style_descriptive_name.extension
+   Example: main_style.css
+ Format (with version): style_descriptive_name_version.extension
+   Example: reset_v1.css
+
+JavaScript Files
+  Format: script_descriptive_name.extension
+    Example: utility_functions.js
+  Format (with version): script_descriptive_name_version.extension
+    Example: form_validation_v3.js
+
+Fonts
+  Format: font_family_name.extension
+    Example: open_sans.ttf
+  Format (with variant): font_variant_name.extension
+    Example: bold_italic.otf
+
+Other Assets
+  Format: asset_descriptive_name.extension
+    Example: favicon.ico
+  Format (with version): asset_descriptive_name_version.extension
+    Example: custom404_v2.html
+
+   Consistently following these asset naming standards will lead to a more organized and
+   efficient workflow, making it easier for team members to find and work with assets. Please
+ensure that all team members are aware of and adhere to these guidelines when managing
+assets on our website.
+

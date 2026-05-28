@@ -1,0 +1,152 @@
+Domains & Hosting
+All Domains
+          Domain                Registrar               Status
+          sensorglobal.com      Route 53                PRIMARY
+
+
+          sensorglobal.com.au   Route 53                Email redirect setup to
+                                                        route to
+                                                        sensorglobal.com
+          sensorglobal.co.uk    Route 53                UNUSED
+
+
+          sensorglobal.dev      -                       -
+          sensorglobal.net      Route 53                UNUSED
+
+
+          sensorglobal.au       Route 53                UNUSED
+
+
+          sensorglobal.co.nz    Route 53                UNUSED
+
+
+          sensorglobal.nz       Name.com (Route 53      UNUSED
+
+                                does not support this
+                                TLD)
+          sensoriq.au           Route 53                UNUSED
+
+
+          sensoriq.co.uk        Route 53                UNUSED
+
+
+          sensoriq.com.au       Route 53                UNUSED
+
+
+          sensoriq.net          Route 53                UNUSED
+
+
+          sensoriq.com          -                       Unavailable
+          sensorsmartinsurance. Route 53                UNUSED
+
+          com
+          sensorsmartinsurance. Route 53                UNUSED
+
+          com.au
+          sensorinsure.com      Route 53                Primary insurance
+                                                        website
+             sensorinsure.com.au       Route 53                 Also used for insurance
+                                                                website
+
+
+Primary SaaS URLs
+Production
+
+             URL                                  Info
+             www.sensorglobal.com                 Main website - handled by
+                                                  WebIgnite.
+             api.sensorglobal.com                 SaaS API.
+             admin.sensorglobal.com               Admin web.
+             trader.sensorglobal.com              Trader web.
+             agent.sensorglobal.com               Agent web.
+             mqtt.sensorglobal.com                MQTT broker, running on port
+                                                  18756.
+             activation.sensorglobal.com          Activation URL that all Hub/Alarm
+                                                  QR codes resolve to.
+             owner.sensorglobal.com               Asset Owner web.
+
+Internal
+
+             URL                                  Info
+             monitoring.sensorglobal.com          Internal monitoring.
+             sonar.sensorglobal.com               Internal code quality monitoring.
+
+
+Sandbox
+
+             URL                                  Info
+             https://crm-                         Main website - handled by
+             sandbox.sensorglobal.com             WebIgnite.
+     https://api-                         SaaS API.
+     sandbox.sensorglobal.com
+     https://admin-                       Admin web.
+     sandbox.sensorglobal.com
+     https://trader-                      Trader web.
+     sandbox.sensorglobal.com
+     https://agent-                       Agent web.
+     sandbox.sensorglobal.com
+     https://mqtt-                        MQTT broker, running on port
+     sandbox.sensorglobal.com             18756.
+     https://activation-                  Activation URL that all Hub/Alarm
+     sandbox.sensorglobal.com             QR codes resolve to.
+     https://owner-                       Asset Owner web.
+     sandbox.sensorglobal.com
+
+QA
+
+     URL                                  Info
+     https://crm-qa.sensorglobal.com      Main website - handled by
+                                          WebIgnite.
+     https://api-qa.sensorglobal.com      SaaS API.
+     https://admin-qa.sensorglobal.com    Admin web.
+     https://trader-qa.sensorglobal.com   Trader web.
+     https://agent-qa.sensorglobal.com    Agent web.
+     https://mqtt-qa.sensorglobal.com     MQTT broker, running on port
+                                          18756.
+     https://activation-                  Activation URL that all Hub/Alarm
+     qa.sensorglobal.com                  QR codes resolve to.
+     https://owner-qa.sensorglobal.com    Asset Owner web.
+Development
+
+              URL                                  Info
+              https://crm-                         Main website - handled by
+              development.sensorglobal.com         WebIgnite.
+              https://api-                         SaaS API.
+              development.sensorglobal.com
+              https://admin-                       Admin web.
+              development.sensorglobal.com
+              https://trader-                      Trader web.
+              development.sensorglobal.com
+              https://agent-                       Agent web.
+              development.sensorglobal.com
+              https://mqtt-                        MQTT broker, running on port
+              development.sensorglobal.com         18756.
+              https://activation-                  Activation URL that all Hub/Alarm
+              development.sensorglobal.com         QR codes resolve to.
+              https://owner-                       Asset Owner web.
+              development.sensorglobal.com
+
+
+Data Storage
+Amazon AWS
+
+Region is ap-southeast-2 (Sydney)
+Sendgrid
+
+SendGrid’s US-based data centers are located in Herndon, VA; Las Vegas, NV; and Chicago, IL.
+When you send mail, it will go to the inbound data center that is closest to you in order to
+transfer mail to our pipeline quickly. Mail is not processed at these locations, but is forwarded to
+our US-based data centers for processing and sending.
+https://sendgrid.com/files/SendGrid-FAQ.pdf
+Twilio
+
+The cloud communication platform for the Twilio Services is hosted by Amazon Web Services
+(“AWS”). The AWS data center infrastructure used in providing the Twilio Services is located in
+the United States.
+   Security Overview | Twilio
+Firebase
+
+The majority of Firebase services run on global Google infrastructure. They could process data
+at any of the Google Cloud Platform locations or Google data center locations.
+< Privacy and Security in Firebase >
+

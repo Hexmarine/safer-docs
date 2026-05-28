@@ -1,0 +1,432 @@
+Beta Test Plan
+Sensor Beta Test Plan
+
+
+Version History
+
+
+Version                         Date         Author        Description
+0.1                             4/08/2021    Sam Collins   Initial draft.
+0.2                             12/08/2021   Sam Collins   Updated to remove
+                                                           electricians and add
+                                                           new timing.
+0.3                             4/01/2022    Sam Collins   Added to Confluence
+                                                           to keep track of it
+                                                           here.
+
+
+
+ Sensor Beta Test Plan
+ Version History
+    Beta Information
+    Testing Scope
+    Support
+    General Feedback
+ Installation
+    Installations
+    Installers
+    Installation Environments
+    Installation Links
+ Installation Process
+    Setup
+    Hardware Installation
+ Specific Testing
+    Setup Process
+    Alarm Hardware
+    Hub Hardware
+    Platform
+    iOS & Android App
+    Testing Schedule
+Beta Information
+
+
+The beta test will run from October 27th, with all devices installed by January 10th, 2022. Post-
+beta, all devices will be left in place for ongoing testing and re-used for Pilot testing.
+
+
+Key goals of the Beta test will be:
+  Confirming the installation process and identifying key areas to improve.
+  Confirming hardware and software performs as expected.
+  Updating installation process for external users in the Pilot.
+  Identifying platform areas of improvement.
+  Identifying any updates to hub or alarm firmware.
+  Confirming if certification is to proceed.
+
+
+
+Testing Scope
+
+
+Exclusions:
+  No level of certification testing will be performed — this will be left to Numens/et. al.
+  CRM integration will not be tested.
+  Quickbooks integration will not be tested.
+  No devices will require an electrician to install.
+
+
+
+Support
+
+
+During the Beta, for any urgent issues, contact Sam Collins on 0422252257. For any other
+support, email Sam Collins via samc@sensorglobal.com.
+General Feedback
+
+
+Throughout the entire Beta test, feedback on any part of the system is encouraged, no matter
+how insignificant it may seem. For any issues not covered in other specific tests, please fill out
+as much of this table as possible and include any additional screenshots for iOS/web issues
+and/or photos for physical devices.
+
+
+
+ #             Description Date / Time Steps to           Expected      Actual         Photos /
+                                       Reproduce          Behaviour     Behaviour      Screenshot
+                                                                                       s
+Installation
+Installations
+
+
+For the Beta, a total of ten sensor hubs will be installed into ten properties, with an average of
+three alarms per property. The goal is to get all properties installed by the 10th Jan, for a
+minimum week long testing period before go/no-go on certification on the 14th Nov.
+
+
+Alan and Andrew’s houses to be used “for real” with alarms wired into the downstairs area. One
+of these to be tested as a “duplex” where upstairs and downstairs are setup independently.
+
+
+
+ #          Name       Address Phone          # Alarms # Hubs       Install    Installer Environ
+                                                                    date                 ment
+ 1          Sam        2/254    042225        2          1          27/10/20               2
+            Collins    Riding   2257                                21
+                       Road,
+                       Balmoral
+                       , 4171,
+                       Qld
+ 2          Lee     1108/18                   2          1          27/10/20
+            Ranchod Thorne                                          21
+                    Street,
+                    Kangaro
+                    o Point,
+                    4169
+ 3          Alan       8                      5          2          3/11/202               2
+            Scott      Highland                                     1
+                       s Street
+                       Albion
+                       4010
+ 5          Cam,    2225                      3          1          3/11/202
+            Sam and Masters                                         1
+     Taylor   Enclave,
+     Davis    Sanctuar
+              y Cove,
+              Qld,
+              4217
+7    Andrew   50 Vista 0418652 5       2   3/11/202   Coastal,
+     Cox      Ave,     822                 1          elevated
+              Copacab                                 1km from
+              ana,                                    beach,
+              NSW,                                    very
+              2251                                    windy
+                                                      (predomi
+                                                      nant
+                                                      South
+                                                      winds)
+8    Cam      5/9                  3   1   5/11/202
+     Davis?   Freybug                      1
+              St
+              Bundall,
+              Qld,
+              4217
+9    Andrew   22         Simon    3    1   5/11/202   Coastal
+     Cox      Griffin    Cox               1          Suburb,
+              Rd, Curl   (Andrew                      plenty
+              Curl,      s                            salt,
+              NSW,       brother)                     450m
+              2096                                    from
+                         0439
+                                                      beach
+                         683 070
+                                                      east
+                         C/-
+                                                      facing,
+                         Andrew
+                                                      predomi
+                         0418
+                                                      nant NE
+                         652 822
+                                                      Winds
+10   Andrew   Yeppoon Owner        3   1   5/11/202   Capricor
+     Cox      , QLD   Janani               1          n Coast,
+                      (TBC))      Krievins                          Cyclone
+                                  (Andrew’                          region,
+                                  s good                            really
+                                  mate                              humid
+                                  C/-
+                                  Andrew
+                                  0418
+                                  652 822
+
+
+11           Andrew   548 The     Owner 3             1             4.5 km
+             Cox      entrance    Geoff &                           from
+                      Rd, Erina   Jan Cox                           coast,
+                      Heights     (Andrew’                          elevated
+                                  s dad                             ppty,
+                                  and step                          Predomi
+                                  mum)                              nantly
+                                  C/-                               NE
+                                  Andrew                            winds.
+                                  0418
+                                  630 519
+
+
+12           Sam      Glenn                  1        1
+             Davis    Innes
+                                             30       12
+
+
+
+
+Installers
+
+
+#                       Name                      Contact   Notes
+                        TBD
+Installation Environments
+
+ #                                                 Details
+ 1                                                 Sensor Hub and alarms installed “for real”,
+                                                   shadowing existing smoke alarms in the
+                                                   property. Smoke alarms are to be a mix of AC
+                                                   and battery powered.
+ 2                                                 As environment 1, but alarms will be positioned
+                                                   around the house for testing specific items. I.e.
+                                                   on an extension lead and placed in a bathroom.
+
+
+
+
+Installation Links
+
+
+These will be filled out as they’re available:
+
+
+     Sensor Web platform
+     Sensor iOS app
+     Sensor Android app
+     OpenSignal app
+
+
+Installation Process
+Setup
+     Use the OpenSignal app to test network strength at installation address.
+     Admin (Sam Collins) logs into portal to perform the following:
+     Admin adds Property.
+     Admin adds Agency.
+  Admin adds Landlord details.
+  Admin adds Tenant details.
+  Admin adds Installer details.
+  Agent installs mobile app.
+  Installer installs mobile app.
+  All hardware will have 240V leads added, Sam D mentioned he knows some friends who’ll be
+  able to do this. TBD details here.
+
+
+
+Hardware Installation
+
+
+Hardware installation is two-part, with the Sensor Hub being installed initially, then alarms.
+
+
+Sensor Hub
+  Installer logs into mobile app.
+  Agent assigns Job (on a Property) to an Installer.
+  Installer receives push notification about Job.
+  Installer takes hardware to location and opens app ready to install.
+  Installer scans Sensor Hub QR code with app and installs Sensor Hub hardware, nominally
+  behind the fridge.
+  Hardware will be installed on 240V leads, so they can be moved around and installed
+  anywhere. TBD any additional instructions.
+  Installer takes photos of Sensor Hub after it's installed.
+  API activates SIM card and polls VERIFY command to Sensor Hub until a response is
+  received.
+  After 5-10 minutes, the SIM card will be active and the API will receive a VERIFY response
+  from the Sensor Hub to indicate it's now online.
+
+
+Alarms
+  After Sensor Hub is installed, Installer will scan the alarm QR code with the app and physically
+  install alarm as required.
+  Hardware will be installed on 240V leads, so they can be moved around and installed
+  anywhere. TBD any additional instructions.
+  API will send ADD command to Sensor Hub, which will then link the alarm to that Sensor Hub
+  taking around 10 seconds.
+  Installer will repeat this process to add additional alarm(s) in property.
+  Installer takes photos of alarms after they're installed.
+  Installer checks that all alarms have adequate battery charge remaining (TBD above 90%,
+  and possibly added via App to show warning).
+  After all alarms are installed, Installer will run a Test, where the API will send the Sensor Hub a
+  TEST event - and each alarm will sound in sequence.
+  With a positive response to the TEST event, installation is done and the Installer taps confirm
+  to sign off the Job.
+
+
+
+
+Specific Testing
+
+
+When testing, please run through Specific Tests and record results, and record any other
+feedback not covered in that section under General Feedback. Each of these items will be
+elaborated on before Beta commences:
+
+
+
+Setup Process
+
+
+Setup Process — Are the installation instructions easy to follow to install the Sensor Hub and
+alarms in a property?
+Hardware Installation — Are there any issues during the hardware installation process?
+
+
+
+Alarm Hardware
+
+
+Smoke Alarm — Does the alarm correctly send an alert when detecting smoke?
+Humidity — Does the alarm remain silent in the presence of high humidity?
+Hush — Does the alarm hush and send a hush notification when pressing the hush button?
+Heat — Does the alarm remain silent in a high heat environment?
+Sand/dust — Does the alarm remain silent in a sandy/dusty environment?
+Tamper test — Does the alarm correctly send a tampered alert when tampered with?
+Alarm power loss — Does an AC powered alarm still function correctly when it is unpowered?
+General Handling — Can you identify any issues with the general handling of the alarm?
+
+
+
+Hub Hardware
+
+
+Hub power loss — Does the hub still function correctly (and all attached alarms, etc) when it is
+unpowered?
+
+
+
+Platform
+
+
+Admin Login — Can the user log into the Admin platform?
+Agency Login — Can the user log into the Agency platform?
+Trade Person Login — Can the user log into the Trade person platform?
+View Dashboard
+Add Agencies
+View Agencies
+Edit Agencies
+Remove Agencies
+List Agencies
+Filter Agencies
+Add Agents
+View Agents
+Edit Agents
+Remove Agents
+List Agents
+Filter Agents
+Add Electricians
+View Electricians
+Edit Electricians
+Remove Electricians
+List Electricians
+Filter Electricians
+Add Jobs
+View Jobs
+Edit Jobs
+Remove Jobs
+List Jobs
+Filter Jobs
+Add Landlords
+View Landlords
+Edit Landlords
+Remove Landlords
+List Landlords
+Filter Landlords
+Add Leases
+View Leases
+Edit Leases
+Remove Leases
+List Leases
+Filter Leases
+Add Properties
+View Properties
+Edit Properties
+Remove Properties
+List Properties
+Filter Properties
+Add Tenants
+View Tenants
+Edit Tenants
+Remove Tenants
+List Tenants
+Filter Tenants
+View Hubs
+Filter Hubs
+View Alarms
+Filter Alarms
+
+
+
+iOS & Android App
+
+
+Landing — Does the landing screen(s) look and behave correctly and is the content
+appropriate?
+Login — Can you log into the iOS/Android app?
+Forgot Password — Can you reset your password through the Forgot Password feature?
+Dashboard — Does the app dashboard show jobs and properties?
+Active Jobs — Can you view active jobs?
+Completed Jobs — Can you view completed jobs?
+Total Jobs — Can you view total jobs?
+Filter Jobs — Can you filter jobs using any criteria?
+Job Details — Can you drill into a job to view additional details?
+View Profile — Can you view your profile?
+Edit Profile — Can you update various details on your profile?
+Notifications — Do you receive push notifications?
+
+
+Electrician
+
+
+Start Job — Can you start a new job?
+Add Sensor Hub — Can you add a Sensor Hub to a job by scanning it’s QR code?
+Add Alarm — Can you add an alarm to a job by scanning it’s QR code?
+Complete Job — Can you complete a job?
+
+
+Agent
+
+
+Properties — Can you view all properties?
+Search Properties — Can you search for properties and see the expected results?
+Alarm Status — Can you check the alarm status on a property?
+Test Alarms — Can you test the alarms on a property?
+Create Job — Can you create a new job assigned to an Electrician?
+
+
+
+
+Testing Schedule
+
+
+Name                                           Tests
+Sam Collins                                    All tests
+Lee Ranchod                                    TBD
+Alan Scott
+Sam Davis
+Taylor Davis
+Cam Davis
+Andrew Cox
+

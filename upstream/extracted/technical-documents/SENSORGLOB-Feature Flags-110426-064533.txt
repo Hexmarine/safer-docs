@@ -1,0 +1,140 @@
+Feature Flags
+This document outlines the feature flags currently in use within our software systems. Feature
+flags allow for granular control over application features, enabling experimentation, phased
+rollouts, and quick disabling of features in case of issues.
+
+ Flag Name Description                  De QA Sa UA Pr Sta Depe Cr Affected
+                                        v     nd T od tus nden eat Stakehol
+                                              box          cies ion ders
+                                                                Da
+                                                                te
+ EnableDo     Enables the Do Job        ON    ON    OFF   OFF   OFF             Ma
+ Job          function in SaaS. For                                             y 8,
+              internal use only.                                                20
+                                                                                25
+ EnableJo     Enables the Job Codes     OFF   OFF   OFF   OFF   OFF              Ap
+ bCodes       functionality in                                                  r
+              iOS/Android.                                                      30,
+                                                                                20
+                                                                                25
+ Corpsure     If enabled, issues        ON    ON    OFF   OFF   OFF              Ma
+ AutoAcce     Corpsure policies                                                 r 7,
+ ptance       automatically accept                                              20
+              properties and create                                             25
+              jobs.
+ EnableRe     Allows Reconnection       ON    ON    OFF   OFF   OFF              Ma
+ connecti     jobs to be created.                                               r 4,
+ onJob                                                                          20
+                                                                                25
+ EnableAd     Enabled the additional    ON    ON    OFF   OFF   OFF             Ja
+ ditional     product invites button.                                           n
+ ProductI                                                                       23,
+ nvites                                                                         20
+                                                                                25
+ManualCo   If turned on, will send   OFF   OFF   OFF   OFF   OFF          Ja
+rpSureAP   CorpSure API requests                                         n
+I          to be processed                                               16,
+           manually rather than                                          20
+           the form.                                                     25
+EnablePu   Enables the Purchase      OFF   OFF   OFF   OFF   OFF          Ja
+rchaseSt   Stock tab for Agencies                                        n
+ockTab     and MTSs.                                                     15,
+                                                                         20
+                                                                         25
+EnableCr   Enables the Credit tab    OFF   OFF   OFF   OFF   OFF          Ja
+editFunc   for Agencies and MTSs.                                        n
+tion                                                                     14,
+                                                                         20
+                                                                         25
+addProdu   ??                        ON    ON    OFF   OFF   OFF         Ja
+ct                                                                       n 7,
+                                                                         20
+                                                                         25
+addJobEn   Displays the Add job      ON    OFF   OFF   OFF   OFF          No
+abled      type.                                                         v
+                                                                         13,
+                                                                         20
+                                                                         24
+insuranc   Enables insurance         OFF   ON    OFF   OFF   OFF          Oc
+eViaAPI    submissions via the                                           t
+           CorpSure API.                                                 30,
+                                                                         20
+                                                                         24
+useOdooR   Disables RCTI             ON    ON    ON    OFF   ON    Rea    Oc
+CTI        generation inside SaaS.                                 dy    t 7,
+                                                                   To    20
+                                                                   Arc   24
+                                                                     hiv
+                                                                     e
+testPack   Used in testing to          ON    ON    OFF   OFF   OFF         Au
+           generate test pack                                              g
+           agencies.                                                       29,
+                                                                           20
+                                                                           24
+csvGener   Used in testing to          ON    ON    OFF   OFF   OFF         Au
+ator       generate CSVs inside                                            g
+           SaaS.                                                           21,
+                                                                           20
+                                                                           24
+csvHisto   Used in testing to allow    ON    ON    OFF   OFF   OFF         Au
+ricalDow   historical CSV files to                                         g
+nload      be downloaded.                                                  21,
+                                                                           20
+                                                                           24
+Communic   Enables the overnight       ON    ON    ON    OFF   ON           Jul
+ationsQu   communications queue.                                           18,
+eue                                                                        20
+                                                                           24
+OwnerELe   Displays the Learning       OFF   OFF   OFF   OFF   OFF          Jul
+arningVi   button on the landlord                                          1,
+sible      portal.                                                         20
+                                                                           24
+consoleC   Shows Console Cloud         ON    ON    OFF   OFF   ON           Ap
+loud       as an integration option.                                       r 11,
+                                                                           20
+                                                                           24
+Postcode   Enables the postcode-       ON    ON    ON    OFF   ON           Ap
+-          based contractor                                                r 3,
+contract   feature.                                                        20
+ors                                                                        24
+property   Used in test               ON   ON   OFF   OFF   OFF         Ja
+-add-      environments to allow                                        n 9,
+button     properties to be added                                       20
+           manually. Makes an                                           24
+           Add Property button
+           appear to Agents.
+insuranc   Enables insurance as an    ON   ON   ON    OFF   ON    Rea    No
+e          option on the asset                                    dy    v
+           owner invite page.                                     To    17,
+                                                                  Arc   20
+                                                                  hiv   23
+                                                                  e
+monthly-   Enables monthly            ON   ON   ON    OFF   ON           No
+subscrip   subscriptions as an                                          v
+tion       offer type as well as                                        14,
+           annual.                                                      20
+                                                                        23
+offer-     Enables different types    ON   ON   ON    OFF   ON    Rea   No
+feature    of offers on the asset                                 dy    v 8,
+           owner invite page.                                     To    20
+                                                                  Arc   23
+                                                                  hiv
+                                                                  e
+Audit      Shows the audit history.   ON   ON   ON    OFF   ON           Oc
+history                                                                 t
+                                                                        23,
+                                                                        20
+                                                                        23
+test-      Originally used for        ON   ON   ON    OFF   ON    Rea    Oc
+flag       testing.                                               dy    t
+                                                                  To    13,
+                                                                  Arc   20
+                                                                  hiv   23
+                                                                  e
+Status Definitions
+  Active: Currently in use and managed actively.
+  Ready To Archive: Identified by LaunchDarkly for archival: No evaluations in the past 7 days,
+  Flag is 30 days or older, Flag is temporary, Not a prerequisite for other flags
+  Archived: No longer in use; retained for historical reference.
+  Deprecated: Scheduled for removal or replacement.
+

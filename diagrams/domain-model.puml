@@ -1,0 +1,79 @@
+@startuml
+title Sensor - Domain Entities
+
+skinparam linetype ortho
+skinparam packageBackgroundColor #EEF2FF
+skinparam packageBorderColor #99AACC
+skinparam rectangleBackgroundColor #FFFFFF
+skinparam rectangleBorderColor #666
+skinparam arrowColor #444
+skinparam arrowFontSize 11
+
+package "Organisation" {
+  rectangle Agency
+  rectangle Agent
+  rectangle Branch
+}
+
+package "Owner" {
+  rectangle Landlord
+  rectangle Tenant
+}
+
+package "Contractor" {
+  rectangle TradePerson
+  rectangle ServiceStaff
+  rectangle Invitation
+}
+
+package "Property & Lease" {
+  rectangle Property
+  rectangle Pod
+  rectangle PropertyLandlord
+  rectangle Lease
+  rectangle LeaseTenant
+}
+
+package "IoT / Alarms" {
+  rectangle AlarmHub
+  rectangle Alarm
+  rectangle AlarmLog
+  rectangle Product
+}
+
+rectangle Job
+
+' Organisation
+Agency "1" --> "many" Branch      : has
+Agency "1" --> "many" Agent       : employs
+Agency "1" --> "many" Property    : manages
+Agency "1" ..> "many" Invitation  : sends
+Invitation "many" ..> "1" TradePerson : invites
+Landlord "1" --> "many" PropertyLandlord : linked to
+PropertyLandlord "many" --> "1" Property  : for\n(tbl_landlords)
+Agent "1" --> "many" Property     : assigned to
+
+' Property
+Property "1" --> "many" Lease     : has
+Property "1" --> "many" Pod       : grouped in
+Property "1" --> "many" Alarm     : has
+Property "1" --> "many" Job       : has
+
+' Lease
+Lease "1" --> "many" LeaseTenant  : has
+LeaseTenant "many" --> "1" Tenant : is
+Tenant "1" ..> "many" Lease       : occupies via
+
+' IoT
+AlarmHub "1" --> "many" Alarm     : controls\n(hub > sensors)
+Alarm "many" --> "1" Product      : type of
+Alarm "1" --> "many" AlarmLog     : logged in
+Alarm "many" --> "1" Job          : installed via
+
+' Job
+Job "many" --> "1" Agency         : for
+Job "many" --> "1" Agent          : coordinated by
+Job "many" --> "1" TradePerson    : assigned to
+Job "many" --> "1" ServiceStaff   : staffed by
+
+@enduml

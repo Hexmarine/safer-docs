@@ -1,0 +1,236 @@
+    Event types
+
+   For a deeper look at the firmware, please see   Firmware & Protocol Specification .
+
+  SENS-5745: Mapping table for events / human readable messages for updated S037 and S04
+2 emails and new SMS S037S and S042S. READY FOR RELEASE
+{HumanReadableMessage} - Event Human Readable Message to be updated with the NEW
+Human Readable Message below
+
+   Event Name               When does it Happen       NEW Human Readable Message
+   ALERT           ON       When a smoke alarm        {Device_Type} in {location} detected
+                            detects smoke, or a       {type}
+                            water leak detector
+                            detects water (ALERT
+                            ON)
+   ALERT           OFF      when they no longer       {Device_Type} in {location} no
+                            detect smoke / water      longer detected {type}
+                            respectively (ALERT
+                            OFF).
+   TAMPERED        ON       When a smoke alarm is {Device_Type} in {location} was
+                            opened or water leak     tampered
+                            detector is moved out of
+                            its upright position
+                            (TAMPERED ON),
+   TAMPERED        OFF      when the smoke alarm is {Device_Type} in {location} was no
+                            closed or water leak     longer tampered
+                            sensor put back into its
+                            correct orientation.
+                            (TAMPERED OFF)
+   HUSH            ON       The HUSH button has    {Device_Type} in {location} hushed
+                            been pressed to hush a
+                            smoke alarm (HUSH ON)
+HUSH        OFF   after the 8 minute           {Device_Type} in {location} no
+                  timeout expires and the      longer hushed
+                  alarm will sound again.
+                  (HUSH OFF)
+LOW_BATTER ON     This is triggered every      {Device_Type} in {location} reported
+Y (HUB)           time a Hub or reaches        a low battery level of {battery}%
+                  critical battery levels:
+                  15%, 10% and 5%
+LOW_BATTER ON     This is triggered every      {Device_Type} in {location} reported
+Y (ALARM)         time an Alarm reaches        a low battery level of {battery}%
+                  critical battery levels:
+                  5%
+DISCONNECT ON     If a paired alarm fails to   {Device_Type} in {location} was
+                  respond to the Hub’s         disconnected
+                  internal heartbeat
+                  connectivity check that
+                  is triggered every five
+                  minutes.
+RECONNECT   ON    When a paired alarm that {Device_Type} in {location} was
+                  previously was           reconnected
+                  disconnected responds
+                  to a Hub’s internal
+                  heartbeat connectivity
+                  check that is triggered
+                  every five minutes.
+BATTERY     ON    A query response to          {Device_Type} in {location} is on
+                  update battery life of       battery power
+                  both the hub and all
+                  paired alarms.
+                  This is triggered before a
+                  full test, and every time
+                  the hub successfully
+                  responds to a VERIFY
+                  command.
+PREVIOUS INFORMATION
+
+        Event Name     When does it happen? PREVIOUS Human
+                                            Readable Message
+        ALERT          When a smoke alarm          Alarm in {location}
+                       detects smoke, or a         detected {type}
+                       water leak detector
+                                                   Alarm in {location} no
+                       detects water (ALERT
+                                                   longer detected {type}
+                       ON), and when they no
+                       longer detect smoke /
+                       water respectively
+                       (ALERT OFF).
+        TAMPERED       When a smoke alarm is       Alarm in {location} was
+                       opened or water leak        tampered
+                       detector is moved out
+                                                   Alarm in {location} was
+                       of its upright position
+                                                   no longer tampered
+                       (TAMPERED ON), and
+                       when the smoke alarm
+                       is closed or water leak
+                       sensor put back into its
+                       correct orientation.
+                       (TAMPERED OFF)
+        FAULT          The internal smoke
+                       chamber detects a
+                       physical issue with its
+                       ability to function. This
+                       requires a hardware
+                       replacement.
+        HUSH           The HUSH button has         Alarm in {location}
+                       been pressed to hush a      hushed
+                       smoke alarm (HUSH
+                                                   Alarm in {location} no
+                       ON) and after the 8
+                                                   longer hushed
+                       minute timeout expires
+                       and the alarm will
+              sound again. (HUSH
+              OFF)
+ALARMS        This is a                  Hub reported back
+              query/response from        {count} alarms in:
+              the Hub that lists all     {location}
+              paired alarms.
+              This is triggered before
+              a full test, and every
+              time the hub
+              successfully responds
+              to a VERIFY command.
+VERIFY        The Hub heartbeat      Hub connection status
+              query/response. Every verified.
+              24 hours every hub is
+                                     Hub did not respond
+              sent a VERIFY
+              command, and will
+              respond with a
+              corresponding VERIFY
+              response if connected.
+BATTERY       A query response to        Hub battery level is
+              update battery life of     {battery}%
+              both the hub and all
+                                       Alarm in “{location}”
+              paired alarms.
+                                       battery level is
+              This is triggered before {battery}%
+              a full test, and every
+              time the hub
+              successfully responds
+              to a VERIFY command.
+LOW_BATTERY   This is triggered every    Hub reported a low
+              time a Hub or Alarm        battery level of
+              reaches critical battery   {battery}%
+              levels: 15%, 10% and
+                                         Alarm in {location}
+              5%.
+                                         reported a low battery
+                                         level of {battery}%
+TEST         One TEST event is sent Alarm in {location}
+             to the Hub to initiate a reported a {status} test
+             full test of all paired
+             alarms. Each paired
+             alarm will then respond
+             with a TEST success or
+             TEST failure within five
+             minutes.
+RECONNECT    When a paired alarm     Alarm in {location} was
+             that previously was     reconnected
+             disconnected responds
+             to a Hub’s internal
+             heartbeat connectivity
+             check that is triggered
+             every five minutes.
+DISCONNECT   If a paired alarm fails to Alarm in {location} was
+             respond to the Hub’s       disconnected
+             internal heartbeat
+             connectivity check that
+             is triggered every five
+             minutes.
+POWER        When a hub changes Hub switched to
+             between AC and           {status}
+             battery power. This will
+             either happen due to
+             power failing or being
+             restored, or unplugging
+             / replugging the hub
+             power cable.
+REBOOT       A hub has rebooted.
+RESET        A hub has been factory
+             reset.
+ADD          Triggered when             Alarm added in
+             initiating a new alarm /   {location}
+                                   device being paired
+                                   with the Hub. This will
+                                   respond with success
+                                   or failure.
+                                   This usually fails if the
+                                   user forgets to put the
+                                   alarm into pairing mode
+                                   by double-tapping the
+                                   TEST button.
+           REMOVE                  Triggered when              Alarm removed from
+                                   removing an alarm /         {location}
+                                   device from a Hub.
+                                   This will respond with
+                                   success or failure.
+                                   This would only fail in
+                                   rare circumstances,
+                                   most likely during
+                                   testing if the alarm has
+                                   already been removed
+                                   from the hub.
+
+b. {Device_Type} and {type} relationship
+
+           Device Type             {Device_Type}               {type}
+           Sensor Hub              Hub
+           Smoke Alarm             Smoke Alarm                 smoke
+           Water Leak Detector     Water Leak Detector         water
+           Smoke + CO Alarm        Smoke + CO Alarm            carbon monoxide
+                                                               (note, this is for the CO
+                                                               alert type)
+
+4. Update the triggers for the sending of S037 and S042 for when any of the events above are
+  triggered, the email S037 gets sent to Agent and S042 gets sent to Tenant.
+FOR EXAMPLE: If A smoke alarm in the hallway of a property sets off an alert because it
+detects smoke,
+the emails will read as below (and all text underlined is for demonstration purposes of the
+fields/text and will NOT appear as underlined in the actual message created.
+S037:
+Subject: Alert - 123 Happy Street, West Gosford NSW 2250 - Smoke Alarm in hallway detected
+smoke
+The Smoke Alarm in hallway detected smoke at 123 Happy Street, West Gosford NSW 2250.
+Please navigate to your Sensor Portal to action.
+Kind regards,
+Sensor Support Team
+S042:
+Subject: Alert - 123 Happy Street, West Gosford NSW 2250 - Smoke Alarm in hallway detected
+smoke
+The Smoke Alarm in hallway detected smoke at 123 Happy Street, West Gosford NSW 2250.
+Please take the appropriate action, and if any further assistance is required call us on 1300 000
+944.
+Kind regards,
+Agency
+
+
+EMAILS that are affected in this change S037, S042 (Changed), S038, S041, S095 and S096
+(Stopped).
+

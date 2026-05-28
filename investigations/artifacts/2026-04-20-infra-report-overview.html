@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SensorSyn Infrastructure Overview — April 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 11px;
+    color: #1a1a1a;
+    background: #f4f6f9;
+    padding: 20px;
+  }
+
+  .page {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #c8d0dc;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  /* ── Header bar ─────────────────────────────────────────── */
+  .header {
+    background: #1f4e79;
+    color: #fff;
+    padding: 14px 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .header h1 { font-size: 17px; font-weight: 700; letter-spacing: .3px; }
+  .header .meta { font-size: 10px; opacity: .85; line-height: 1.6; text-align: right; }
+
+  /* ── Section labels ─────────────────────────────────────── */
+  .section-label {
+    background: #d6e4f0;
+    color: #1f4e79;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 5px 20px;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    border-top: 1px solid #bcd3e8;
+  }
+
+  /* ── Tables ─────────────────────────────────────────────── */
+  .table-wrap { padding: 12px 20px 16px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+  th {
+    background: #2e75b6;
+    color: #fff;
+    text-align: left;
+    padding: 5px 8px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  th.num { text-align: right; }
+
+  tr:nth-child(even) td { background: #f0f5fb; }
+  td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle;
+  }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  tr.total td {
+    font-weight: 700;
+    background: #dce6f1 !important;
+    border-top: 2px solid #2e75b6;
+  }
+  tr.vanta td { color: #7f6000; background: #fff2cc !important; }
+  tr.subtotal td { font-weight: 600; background: #eaf2fb !important; }
+
+  /* provider table status chips */
+  .ok   { color: #276221; }
+  .warn { color: #7f4c00; }
+
+  /* quick wins effort badges */
+  .badge {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 9px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .low    { background: #e2f0d9; color: #276221; }
+  .medium { background: #fff2cc; color: #7f4c00; }
+  .sec    { background: #dae3f3; color: #1f4e79; }
+
+  /* ── Footnotes ──────────────────────────────────────────── */
+  .footnotes {
+    padding: 2px 20px 10px;
+    font-size: 9.5px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* ── Footer ─────────────────────────────────────────────── */
+  .footer {
+    background: #f0f4f8;
+    border-top: 1px solid #c8d0dc;
+    padding: 8px 20px;
+    font-size: 9.5px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { border: none; max-width: 100%; }
+    @page { margin: 12mm; size: A4 landscape; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <h1>SensorSyn — Infrastructure &amp; Spend Overview</h1>
+      <div style="font-size:10px;opacity:.8;margin-top:3px;">
+        AWS Account 747293622182 &nbsp;·&nbsp; Region ap-southeast-2 &nbsp;·&nbsp; Currency AUD (1 USD = 1.58 AUD)
+      </div>
+    </div>
+    <div class="meta">
+      Prepared 2026-04-20<br>
+      Cost basis: AWS Cost Explorer (actual billing)<br>
+      Apr 2026 = 20-day actuals + projection
+    </div>
+  </div>
+
+  <!-- ── Table 1.1 ──────────────────────────────────────── -->
+  <div class="section-label">1.1 &nbsp;AWS Monthly Run-Rate (A$, actual billing)</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th class="num">Feb 2026</th>
+          <th class="num">Mar 2026 ¹</th>
+          <th class="num">Apr 2026 MTD (20d)</th>
+          <th class="num">Apr 2026 proj. ²</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>EC2 — Compute</td><td class="num">2,609</td><td class="num">2,762</td><td class="num">1,362</td><td class="num">~2,043</td></tr>
+        <tr><td>EC2 — Other (EBS, data xfer, EIPs)</td><td class="num">2,104</td><td class="num">2,181</td><td class="num">1,286</td><td class="num">~1,929</td></tr>
+        <tr><td>CloudWatch</td><td class="num">1,633</td><td class="num">1,832</td><td class="num">948</td><td class="num">~1,422</td></tr>
+        <tr><td>RDS</td><td class="num">1,578</td><td class="num">1,682</td><td class="num">1,319 ³</td><td class="num">~1,583</td></tr>
+        <tr><td>Tax (GST)</td><td class="num">915</td><td class="num">1,002</td><td class="num">606</td><td class="num">~908</td></tr>
+        <tr><td>ElastiCache</td><td class="num">510</td><td class="num">568</td><td class="num">536 ³</td><td class="num">~602</td></tr>
+        <tr><td>OpenVPN (Marketplace)</td><td class="num">653</td><td class="num">690</td><td class="num">270</td><td class="num">~404</td></tr>
+        <tr><td>End User Messaging (SMS)</td><td class="num">458</td><td class="num">707</td><td class="num">82</td><td class="num">~122</td></tr>
+        <tr><td>VPC (NAT GW, flow logs, traffic)</td><td class="num">429</td><td class="num">487</td><td class="num">300</td><td class="num">~450</td></tr>
+        <tr><td>ELB (load balancers)</td><td class="num">350</td><td class="num">392</td><td class="num">256</td><td class="num">~384</td></tr>
+        <tr><td>Amazon QuickSight</td><td class="num">161</td><td class="num">161</td><td class="num">101</td><td class="num">~152</td></tr>
+        <tr><td>Amazon Inspector</td><td class="num">101</td><td class="num">111</td><td class="num">59</td><td class="num">~88</td></tr>
+        <tr><td>AWS WAF</td><td class="num">99</td><td class="num">99</td><td class="num">62</td><td class="num">~93</td></tr>
+        <tr><td>AWS Config</td><td class="num">86</td><td class="num">95</td><td class="num">62</td><td class="num">~93</td></tr>
+        <tr><td>AWS Security Hub</td><td class="num">77</td><td class="num">101</td><td class="num">63</td><td class="num">~95</td></tr>
+        <tr><td>Amazon S3</td><td class="num">61</td><td class="num">61</td><td class="num">56</td><td class="num">~84</td></tr>
+        <tr><td>Amazon GuardDuty</td><td class="num">51</td><td class="num">57</td><td class="num">31</td><td class="num">~46</td></tr>
+        <tr><td>AWS Global Accelerator</td><td class="num">27</td><td class="num">29</td><td class="num">18</td><td class="num">~27</td></tr>
+        <tr><td>Amazon Macie</td><td class="num">17</td><td class="num">18</td><td class="num">13</td><td class="num">~21</td></tr>
+        <tr><td>Amazon Route 53</td><td class="num">12</td><td class="num">12</td><td class="num">12</td><td class="num">~17</td></tr>
+        <tr><td>AWS Systems Manager</td><td class="num">13</td><td class="num">14</td><td class="num">9</td><td class="num">~14</td></tr>
+        <tr><td>AWS Key Management Service</td><td class="num">8</td><td class="num">8</td><td class="num">5</td><td class="num">~8</td></tr>
+        <tr><td>AWS Secrets Manager</td><td class="num">8</td><td class="num">8</td><td class="num">5</td><td class="num">~8</td></tr>
+        <tr><td>Amazon Kinesis Firehose</td><td class="num">4</td><td class="num">4</td><td class="num">2</td><td class="num">~3</td></tr>
+        <tr><td>AWS Glue</td><td class="num">2</td><td class="num">2</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr class="vanta"><td><strong>Vanta (Marketplace, 6-mo lump)</strong></td><td class="num">—</td><td class="num"><strong>9,875</strong></td><td class="num">—</td><td class="num">—</td></tr>
+        <tr class="subtotal"><td>AWS Total (excl. Vanta)</td><td class="num">~11,964</td><td class="num">~13,642</td><td class="num">~7,458</td><td class="num">~10,613</td></tr>
+        <tr class="total"><td>AWS Total (incl. Vanta)</td><td class="num">~11,964</td><td class="num">~23,517</td><td class="num">~7,458</td><td class="num">~10,613</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footnotes">
+    ¹ Mar 2026 Vanta charge A$9,875 (US$6,250 / 6 months). Amortised monthly ≈ A$1,645. Next payment expected Sep 2026.&nbsp;&nbsp;
+    ² Apr 2026 projection: linear extrapolation from 20-day actuals; RDS &amp; ElastiCache adjusted for RI front-loading.&nbsp;&nbsp;
+    ³ Front-loaded 2026-04-01: A$760 RDS RI + A$464 ElastiCache RI.
+  </div>
+
+  <!-- ── Table 1.3 ──────────────────────────────────────── -->
+  <div class="section-label">1.3 &nbsp;All-Provider Summary</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Provider / Service</th>
+          <th class="num">Est. A$/mo</th>
+          <th>Billing method</th>
+          <th>Data quality</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>AWS (base run-rate, excl. Vanta)</td><td class="num">~10,613</td><td>AWS billing</td><td class="ok">✅ Actual (Apr 2026 proj.)</td></tr>
+        <tr><td>Vanta</td><td class="num">~1,645 amortised</td><td>AWS Marketplace, 6-mo lump</td><td class="ok">✅ Confirmed (last payment Mar 2026)</td></tr>
+        <tr><td>New Relic (SaaS subscription)</td><td class="num">[FILL]</td><td>Direct NR billing</td><td class="warn">⚠️ Manual fill</td></tr>
+        <tr><td>MongoDB Atlas</td><td class="num">[FILL]</td><td>Atlas billing</td><td class="warn">⚠️ Manual fill</td></tr>
+        <tr><td>KORE SIM (IoT cellular)</td><td class="num">[FILL]</td><td>KORE portal</td><td class="warn">⚠️ Manual fill</td></tr>
+        <tr><td>Twilio</td><td class="num">[FILL]</td><td>Twilio billing</td><td class="warn">⚠️ Manual fill</td></tr>
+        <tr><td>SendGrid (email)</td><td class="num">[FILL]</td><td>SendGrid billing</td><td class="warn">⚠️ Manual fill</td></tr>
+        <tr><td>Sentry / LaunchDarkly / Bitrise</td><td class="num">[FILL]</td><td>Direct billing</td><td class="warn">⚠️ Manual fill</td></tr>
+        <tr><td>Microsoft 365</td><td class="num">[FILL]</td><td>Microsoft billing</td><td class="warn">⚠️ Manual fill</td></tr>
+        <tr><td>GitHub</td><td class="num">[FILL]</td><td>GitHub billing</td><td class="warn">⚠️ Manual fill</td></tr>
+        <tr><td>Firebase / GCP</td><td class="num">[FILL]</td><td>GCP billing</td><td class="warn">⚠️ Manual fill</td></tr>
+        <tr><td>PropertyMe / PropertyTree / Console Cloud</td><td class="num">[FILL]</td><td>Integration API</td><td class="warn">⚠️ Confirm if paid</td></tr>
+        <tr class="total"><td><strong>TOTAL (AWS + Vanta confirmed)</strong></td><td class="num"><strong>~12,258 + [FILL]</strong></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Key Findings ───────────────────────────────────── -->
+  <div class="section-label">Key Findings &amp; Quick Wins</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Finding</th>
+          <th class="num">Est. A$/mo saving</th>
+          <th>Effort</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>58 idle Elastic IPs — not attached to running instances</td>
+          <td class="num">~335</td>
+          <td><span class="badge low">Low</span> &nbsp;<code>aws ec2 release-address</code> per EIP</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><code>odoo-production</code> RDS io1 → gp3 migration (previously approved)</td>
+          <td class="num">~521</td>
+          <td><span class="badge medium">Medium</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Orphaned UAT environment — EC2 gone but ALBs + Redis + RDS + NAT GW still running</td>
+          <td class="num">~592</td>
+          <td><span class="badge low">Low–Med</span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>CloudWatch A$1,422/mo — investigate metric volume &amp; retention per service</td>
+          <td class="num">TBD</td>
+          <td><span class="badge medium">Medium</span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>5× <code>createfilezip*</code> Lambda functions on EOL nodejs16.x</td>
+          <td class="num">—</td>
+          <td><span class="badge sec">Security</span> <span class="badge low">Low</span></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><code>snstoteams</code> Lambda on EOL python3.9</td>
+          <td class="num">—</td>
+          <td><span class="badge sec">Security</span> <span class="badge low">Low</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>Data source: AWS Cost Explorer + live CLI queries (aws ec2, rds, elasticache, elbv2, lambda, s3, cloudfront, route53) — 2026-04-20</span>
+    <span>SaaS costs from prior investigation docs where available; [FILL] fields require manual vendor billing entry</span>
+  </div>
+
+</div>
+</body>
+</html>

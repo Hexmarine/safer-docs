@@ -1,0 +1,56 @@
+    Device Types Documentation
+
+   This documentation provides an overview of the device types used in our system. The
+   system interacts with the backend Node.js application and utilizes MongoDB as the
+   database. The connection between the system and the backend is secured through a VPN
+   (Virtual Private Network). The device types listed below are specifically designed for our
+   smoke alarm systems (web), enabling agents, contractors, agencies, and administrators to
+   perform various actions related to configuration, invoicing, setups, and more.
+
+   WARNING: Work in Progress (WIP)
+   This documentation is currently a work in progress and subject to updates, changes, and
+   revisions. We are in the process of documenting the device types used in our system, their
+   functionalities, and their interaction with the backend infrastructure.
+   Your input, feedback, criticism, and suggestions are highly appreciated during this stage.
+   We value your expertise and insights, which can significantly contribute to the accuracy,
+   completeness, and clarity of this documentation. If you notice any inconsistencies,
+   missing information, or have recommendations for improvements, please don't hesitate to
+   provide your feedback.
+   As we strive to create a comprehensive and reliable resource, your active participation is
+   invaluable. Together, we can ensure that this documentation reflects the most up-to-date
+   and accurate information about our system's device types, backend architecture, and
+   security measures.
+   Thank you for your understanding, collaboration, and contribution in refining this
+   documentation. We appreciate your involvement in shaping a robust and user-friendly
+   system for all stakeholders involved.
+
+Exported Device Types:
+1. Android:
+    ID: 1
+    Code: android
+    Name: Android
+The Android device type represents devices running the Android operating system. Users can
+access the system and perform various actions using Android devices.
+2. iOS:
+     ID: 2
+     Code: ios
+     Name: iOS
+The iOS device type represents devices running the iOS operating system. Users can access
+the system and perform various actions using iOS devices.
+3. Web:
+     ID: 3
+     Code: web
+     Name: Web
+The Web device type represents devices accessing the system through web browsers. Users
+can utilize the web interface to perform various actions and manage the smoke alarm systems.
+The system's backend, built on Node.js, provides APIs that facilitate communication between
+the frontend and the database. MongoDB serves as the underlying database technology, storing
+and retrieving data for the system's functionalities.
+The secure connection established via a VPN ensures the confidentiality and integrity of data
+exchanged between the system and the backend. This ensures a safe and reliable environment
+for performing operations related to smoke alarm system configuration, invoicing, setups, and
+more.
+Please note that this documentation may be updated or expanded as the system evolves or
+additional device types are introduced. Your feedback and suggestions are welcome to improve
+and enhance this documentation.
+
