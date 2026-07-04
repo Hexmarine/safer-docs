@@ -16,8 +16,8 @@ Code knowledge base — if the instance is lost, corrupted, or must be rebuilt.
 |---|---|---|---|
 | Application/code repos | `~/dev/sensorsyn/code/*` | GitHub (SensorGlobal / SaferHomesAu orgs) | ~24 nested repos; clean clones |
 | Platform docs, runbooks, investigations | `~/dev/sensorsyn/docs/` | `SaferHomesAu/sensor-safer-docs-investigations` | **Only as fresh as the last push** — commit/push at wrap-up |
-| Claude memory, plans, config | `~/.claude/` | Private repo (whitelist `.gitignore`; init 2026-07-03) | Includes all `projects/*/memory/`, `plans/`, CLAUDE.md, settings, keybindings |
-| Operational scripts (MFA login, tunnels, diag, import guards, key rotation) | `~/dev/sensorsyn/scripts/` | restic/B2 (6-hourly) | git-untracked — see "Open gaps" below |
+| Claude memory, plans, config | `~/.claude/` | `Hexmarine/safer-claude` (whitelist `.gitignore`) + restic/B2 | Includes all `projects/*/memory/`, `plans/`, CLAUDE.md, settings, keybindings |
+| Operational scripts (MFA login, tunnels, diag, import guards, key rotation) | `~/dev/sensorsyn/scripts/` | `Hexmarine/safer-scripts` + restic/B2 | secret-scanned clean before first push |
 | Undo snapshots + PII extracts | `~/dev/sensorsyn/ops-and-extracts/` | restic/B2 (6-hourly) + EBS snapshot | must NOT go to GitHub — PII; restic is client-side encrypted |
 | AWS credentials/profile | `~/.aws/` (`sensorsyn-mfa` profile) | restic/B2 (encrypted) | never in git; MFA device re-pair still manual |
 | kubeconfig | `~/.kube/config` | restic/B2; or regenerate: `aws eks update-kubeconfig --name safer-ops-prod` | |
@@ -75,7 +75,7 @@ Restore round-trip was verified 2026-07-04 (single-file restore, byte-identical)
 2. **Toolchain:** git, gh, zsh, python3 + boto3, AWS CLI v2 (beware the
    v2.31/Python 3.14 `send-command` argparse bug — prefer boto3 for SSM), volta →
    node + `@openai/codex`, kubectl, helm, docker, terraform, Claude Code.
-3. **Restore the Claude knowledge base:** clone the private `~/.claude` repo to a
+3. **Restore the Claude knowledge base:** clone `Hexmarine/safer-claude` to a
    temp dir, copy its contents into a fresh `~/.claude/` (it is a whitelist repo —
    the clone IS the durable subset), then `claude login`. Memory, plans, settings,
    keybindings are back. Re-add the Playwright MCP to `~/.claude.json` per the
@@ -84,8 +84,7 @@ Restore round-trip was verified 2026-07-04 (single-file restore, byte-identical)
 4. **Recreate the workspace:** `mkdir ~/dev/sensorsyn && cd ~/dev/sensorsyn`;
    clone `SaferHomesAu/sensor-safer-docs-investigations` as `docs/`; clone the
    needed `code/*` repos (start with sensor-alarm-backend, safer-ops, sso-provider,
-   sensor-mcp; the rest on demand). Restore `scripts/` from its off-box copy
-   (see gaps) or from the docs of record.
+   sensor-mcp; the rest on demand). Clone `Hexmarine/safer-scripts` as `scripts/`.
 5. **Credentials:** recreate `~/.aws` (IAM user keys + `sensorsyn-mfa` profile,
    MFA device), `aws eks update-kubeconfig --name safer-ops-prod`, `gh auth login`
    + SSH key registered with both GitHub orgs.
@@ -116,9 +115,9 @@ Losses without a snapshot: `ops-and-extracts/` (incident undo files, PII extract
    age-based retention; policy targets INSTANCE with boot volume included).
    See `docs/applied-changes.md`. Undo = remove that TargetTags entry.
    Confirm the first snapshot exists after the next 09:00 UTC run.
-2. **`scripts/` is git-untracked.** Covered by restic/B2 since 2026-07-04, so no
-   longer a durability gap — but a git home (own private repo, or fold into the
-   docs repo after a secret-scan) would still add history/review.
+2. ~~`scripts/` is git-untracked.~~ **CLOSED 2026-07-04:** now a repo at
+   `Hexmarine/safer-scripts` (private; secret-scanned clean) and covered by
+   restic/B2. Commit/push it as part of the wrap-up habit.
 3. `backups/incident-20260604/` (Haven-incident PITR extracts referenced in
    investigation notes) **no longer exists on disk** — treat as gone; the RDS PITR
    window has long since passed. Job-closure undo CSVs still exist under
