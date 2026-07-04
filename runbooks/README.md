@@ -69,6 +69,8 @@ the relevant runbook immediately. Do not wait.
 | [11-mongo-custody-and-aws-restore.md](11-mongo-custody-and-aws-restore.md) | AWS-controlled MongoDB custody dump, JV Atlas restore, and DocumentDB fallback pilot | - | Medium-High |
 | [12-aws-access-containment-follow-up.md](12-aws-access-containment-follow-up.md) | Post-incident AWS IAM access cleanup after Appinventiv/OneLogin containment | - | High |
 | [13-ses-sensorglobal-domain-provisioning.md](13-ses-sensorglobal-domain-provisioning.md) | Provision SES for `sensorglobal.com` before backend email cutover | - | Medium |
+| [14-deploy-mqtt-forensic-tap.md](14-deploy-mqtt-forensic-tap.md) | Deploy the independent MQTT forensic tap (`tbl_device_events` journal) | - | Low |
+| [15-workstation-recovery.md](15-workstation-recovery.md) | Recover the dev workstation + Claude knowledge base (snapshot restore or rebuild) | - | Low |
 
 For log retention changes, use `scripts/set-log-retention.sh` for the first non-prod rollout rather
 than ad hoc CLI loops. The script keeps an explicit allowlist and supports `--dry-run`.

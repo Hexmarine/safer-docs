@@ -26,6 +26,7 @@ proposals doc for the actionable, costed list, the others for how it was derived
 | `2026-04-09-cloudwatch-newrelic-deep-dive.md` | CloudWatch cost drivers + New Relic metric-stream impact |
 | `2026-04-11-rds-deep-analysis.md` | RDS load/IOPS analysis behind the io1→gp3 call |
 | `2026-05-06-rds-cache-cost-optimisation.md` | RDS io1→gp3 + gp2→gp3 safety; ElastiCache reserved-instance review |
+| `2026-07-01-createfilezip-lambda-decommission.md` | Retiring the `createfilezip*` Lambdas (deprecated nodejs16.x) instead of upgrading |
 
 ## Infrastructure baseline & architecture
 | Note | Covers |
@@ -47,6 +48,8 @@ proposals doc for the actionable, costed list, the others for how it was derived
 | `2026-04-10-inv-results.md` | EMQX 5.8.7 single-node; port 18756 hub TLS; cert expiry finding |
 | `2026-05-15-mqtt-lab-routing-design.md` | Safe prod→QA/UAT MQTT mirroring without moving the field fleet |
 | `2026-04-29-low-traffic-mqtt-and-optimisation.md` | Quiet-month MQTT activity check + cost candidates |
+| `2026-06-30-sensor-mqtt-qos0-finding.md` | Backend subscribes device MQTT at QoS 0 — reliability gap (parked; measure via the tap first) |
+| `2026-06-30-device-events-journal-design.md` | Independent MQTT tap → Mongo `tbl_device_events` journal (design, approved) |
 
 ## Auth, SSO & sessions
 | Note | Covers |
@@ -68,6 +71,13 @@ Incident records are kept as postmortem history even after resolution.
 | `2026-05-08-aws-admin-access-and-asg-scale-down.md` | ASG zeroed by a OneLogin federated user; IAM access analysis → runbook `12` |
 | `2026-05-08-prod-sms-global-disable.md` | Emergency SMS gate `SEND_SMS=0` in `sensor-prod` |
 | `2026-05-09-sendgrid-template-migration.md` | SendGrid: read key OK, send-mail key unauthorised |
+| `2026-06-04-haven-mass-deactivation-and-recovery.md` | Import full-snapshot reconcile deactivated the entire Haven portfolio; exact PITR-clone restore (resolved 06-10) |
+| `2026-06-14-sso-jwt-key-leak-remediation.md` | Committed prod SSO/JWT signing key: externalisation to Secrets Manager + 3-phase rotation (remediated; incl. the key-mapping login outage) |
+| `2026-06-16-ses-bounce-source-and-comms-health.md` | SES 8% bounce = account suppression-list re-bounces; overdue-reminder volume; import-warning zombies; SES→SQS capture pipeline |
+| `2026-06-20-audit-export-silent-failure-root-cause.md` | Audit-History PDF export silent failure: unguarded archive read + missing Puppeteer Chrome + stuck-flag lockout (resolved 06-22) |
+| `2026-06-21-alerts-propertyid-scoping-leak.md` | Per-property alerts leak in `/users/alarms/alerts` (root-caused; fixed locally, deploy pending) |
+| `2026-06-26-hub-lowbattery-varchar-string-compare.md` | ~2,340 hubs spuriously `lowBattery=1`: varchar `batteryStatus` compared lexically (fix + cleanup pending) |
+| `2026-07-01-sensor-discards-low-battery-frames.md` | Backend discards all device-initiated LOW_BATTERY MQTT frames (confirmed via the forensic tap; intent check before fixing) |
 
 ## Migration, account detach & EKS
 | Note | Covers |
@@ -90,6 +100,8 @@ Incident records are kept as postmortem history even after resolution.
 ## Vendors & integrations
 | Note | Covers |
 |---|---|
+| **`2026-07-03-sensorinsure-corpsure-integration-review.md`** | **Authoritative** SensorInsure/CorpSure landlord-insurance product: code trace (backend/Angular/Odoo), live funnel state (3,787 invites → 2 policies; dormant since ~2026-04), business model ($14.99/mo CorpSure→Sensor), stubbed NEXU, revival levers |
+| **`2026-06-24-property-management-integrations-propertyme-propertytree.md`** | **Authoritative** PropertyMe & Property Tree PMS imports: auth models, sync flow, full-snapshot risk, commented-out PME reconcile, PT shared-token + off-by-one (code-verified) |
 | **`2026-04-21-odoo-integrations-analysis.md`** | **Authoritative** Odoo 16 + 14 addons; PropertyMe/Shippit/CBA/SendGrid/SES |
 | `2026-05-11-odoo-email-sendgrid-ses.md` | Odoo Postfix→SendGrid SMTP, separate from backend SES cutover |
 | `2026-05-02-sim-activation-flow.md` | KORE/Twilio Super SIM lifecycle; factory vs runtime activation |
@@ -115,6 +127,7 @@ Incident records are kept as postmortem history even after resolution.
 | `2026-05-01-mobile-app-builds.md` | Android Kotlin + iOS native; Gradle flavors; Firebase/AppAuth |
 | `2026-05-21-canonical-install-flow-swimlanes.md` | Original on-site native-app install flow timeline |
 | `2026-05-20-installation-flow-durability-plan.md` | New depot-kit install + recovery ladder — feeds the `safer-ops` work |
+| `2026-05-28-prepared-kit-fungible-pool-pivot.md` | Fungible ready-pool pivot: attach-time binding, async attach/pair — build log (archived from session memory) |
 
 > The depot prepared-kit build that grew out of the last two notes lives in its own
 > repo: [`../../code/safer-ops/docs/`](../../code/safer-ops/docs/README.md).
